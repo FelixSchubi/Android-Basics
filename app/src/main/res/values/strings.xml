@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JustJava</string>
+<!-- Sowas wie einen User-Input ??? -->
+
+    <string name="team_1"></string>
+
+    <string name="team_2"></string>
+
+    <string name="quantity">Anzahl</string>
+    <string name="amount">0</string>
+    <string name="order_button">ORDER</string>
+    <string name="price">PRICE</string>
+</resources>
