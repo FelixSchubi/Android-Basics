@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayMessage() {
         TextView priceTextView = (TextView) findViewById(R.id.price_text);
-        String Message = "Name: Felix \nAnzahl: " + numberOfC + "\nAdded: " + wantMore + "\nTotal: " + numberOfC*2 + " Euro\nDanke!";
+        String Message = "Name: Felix \nAnzahl: " + numberOfC + "\nAdded: " /*+ wantMore*/ + "\nTotal: " + numberOfC*2 + " Euro\nDanke!";
         priceTextView.setText(Message);
     }
 
@@ -43,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
         priceTextView.setText("");
     }
 
-
+/*
     public void CHECKBOX (View view) {
 
     }
-
+*/
 
     private void displayMessageForFree(String forFree) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text);
