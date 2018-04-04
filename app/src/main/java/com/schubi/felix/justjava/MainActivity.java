@@ -1,9 +1,12 @@
 package com.schubi.felix.justjava;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -21,13 +24,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Spinner spinnerTest = findViewById(R.id.spinnerView);
+
         ArrayAdapter <CharSequence> adapterTest = ArrayAdapter.createFromResource
                 (this,R.array.spinner_A, android.R.layout.simple_spinner_item);
 
         spinnerTest.setAdapter(adapterTest);
-
-
     }
+
+
+
+
 
     int numberOfC = 2;
     int price;
@@ -146,4 +152,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
 }
+
