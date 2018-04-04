@@ -2,35 +2,43 @@ package com.schubi.felix.justjava;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView;
 
-import java.text.NumberFormat;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends Activity implements View.OnClickListener {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner spinnerTest = findViewById(R.id.spinnerView);
 
-        ArrayAdapter <CharSequence> adapterTest = ArrayAdapter.createFromResource
-                (this,R.array.spinner_A, android.R.layout.simple_spinner_item);
-
-        spinnerTest.setAdapter(adapterTest);
+        Button mBtn1 = (Button) findViewById(R.id.mBtn1);
+        mBtn1.setOnClickListener(this);
+    }
+//*******************************************************/////
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.first_menu, menu);
+        return true;
     }
 
+    @Override
+    public void onClick(View v) {
+        Log.i("clicks","You Clicked B1");
+        Intent i=new Intent(MainActivity.this, MainActivity2.class);
+        startActivity(i);
+    }
+
+    ////******************//////////////////////////
 
 
 
@@ -63,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayMessage() {
         TextView priceTextView = (TextView) findViewById(R.id.price_text);
-        String Message = "Name: Felix \nAnzahl: " + numberOfC + "\nAdded: " + wantMore + "\nTotal: " + numberOfC*price + " Euro\nDanke!";
+    // String Message = "Name: Felix \nAnzahl: " + numberOfC + "\nAdded: " + wantMore + "\nTotal: " + numberOfC*price + " Euro\nDanke!";
+       String Message = "Geht";
         priceTextView.setText(Message);
     }
 
@@ -77,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     boolean wantMore;
 
     public void CHECKBOX (View view) {
-        boolean checked = (( CheckBox) view).isChecked();
+        boolean checked = ((CheckBox) view).isChecked();
         Context context = getApplicationContext();
         switch (view.getId()) {
             case R.id.checkBox:
