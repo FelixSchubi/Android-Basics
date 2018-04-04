@@ -4,8 +4,10 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,12 +19,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Spinner spinnerTest = findViewById(R.id.spinnerView);
+        ArrayAdapter <CharSequence> adapterTest = ArrayAdapter.createFromResource
+                (this,R.array.spinner_A, android.R.layout.simple_spinner_item);
+
+        spinnerTest.setAdapter(adapterTest);
+
+
     }
 
     int numberOfC = 2;
     int price;
 
     public void submitOrder(View view) {
+        /*
         EditText text = (EditText) findViewById(R.id.edit_text);
         String str = text.getText().toString();
         String forFree = str;
@@ -32,7 +43,17 @@ public class MainActivity extends AppCompatActivity {
         } else {
             displayMessageForFree(forFree);
         };
+        */
+        // Preis aktualisieren?
+        refresh();
+
     };
+
+
+    private void refresh () {
+        displayPrice(this.numberOfC);
+        displayMessage();
+    }
 
     private void displayMessage() {
         TextView priceTextView = (TextView) findViewById(R.id.price_text);
@@ -61,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
 
+                    
+
                 }
                 else {
                     wantMore = false;
@@ -70,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     toast.show();
                 }
         }
-        display(numberOfC);
+        displayPrice(this.numberOfC);
     }
 
 
@@ -121,4 +144,6 @@ public class MainActivity extends AppCompatActivity {
         NodisplayMessage();
 
     }
+
+
 }
