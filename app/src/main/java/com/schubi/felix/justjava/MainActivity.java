@@ -4,13 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
+
+import static android.content.ContentValues.TAG;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -35,7 +39,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         Log.i("clicks","You Clicked B1");
         Intent i=new Intent(MainActivity.this, MainActivity2.class);
+        saveName();
         startActivity(i);
+
     }
 
     ////******************//////////////////////////
@@ -45,7 +51,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     int numberOfC = 2;
     int price;
-
+/*
     public void submitOrder(View view) {
         /*
         EditText text = (EditText) findViewById(R.id.edit_text);
@@ -57,22 +63,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         } else {
             displayMessageForFree(forFree);
         };
-        */
+
         // Preis aktualisieren?
         refresh();
 
     };
 
 
+
     private void refresh () {
         displayPrice(this.numberOfC);
-        displayMessage();
+    //    displayMessage();
     }
+*/
+
 
     private void displayMessage() {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text);
-    // String Message = "Name: Felix \nAnzahl: " + numberOfC + "\nAdded: " + wantMore + "\nTotal: " + numberOfC*price + " Euro\nDanke!";
-       String Message = "Geht";
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view2);
+         String Message = "Name: Felix \nAnzahl: " + numberOfC + "\nAdded: " + wantMore + "\nTotal: " + numberOfC*price + " Euro\nDanke!";
+      // String Message = "Geht";
         priceTextView.setText(Message);
     }
 
@@ -127,9 +136,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         TextView priceView = (TextView) findViewById(R.id.price_view);
 
         if(wantMore == true){
-            price = 5;
+            price = 3;
         } else {
-           price = 3;
+           price = 2 ;
         }
         String euroPrice = number * price + " Euro";
         priceView.setText(euroPrice);
@@ -140,6 +149,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
         priceView.setText("");
     }
 
+   public void saveName (){
+
+       EditText edTextName = (EditText) findViewById(R.id.editText);
+
+       edTextName.setInputType(InputType.TYPE_CLASS_TEXT);
+
+       String StringName = edTextName.getText().toString();
+
+       bindStringName = StringName;
+   }
+
+   String bindStringName;
 
     public void increment(View view) {
         numberOfC++;
@@ -160,7 +181,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     }
 
-
+    public void logDebug(){
+        Log.d(TAG, "logDebug: Das ist ein Test  ");
+      //  displayMessage();
+    }
 
 }
 
